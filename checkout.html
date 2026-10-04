@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% block content %}
+<section class="wrap checkout-grid"><div class="panel">
+<h1>Checkout</h1><form class="product-form" method="post">
+<label>Full Name<input name="name" required placeholder="Your name"></label>
+<label>Mobile Number<input name="phone" required placeholder="01XXXXXXXXX"></label>
+<label>Delivery Address<textarea name="address" required placeholder="House, road, area, district"></textarea></label>
+<label>Delivery Area<select name="delivery_area" id="area" onchange="updateTotal()"><option>Dhaka</option><option>Outside Dhaka</option></select></label>
+<label>Payment Method<select name="payment" id="payment" onchange="toggleTxn()"><option>Cash on Delivery</option><option>bKash</option><option>Nagad</option></select></label>
+<div id="paymentInfo" class="payment-info"><b>bKash:</b> Send payment to <strong>{{bkash}}</strong>.<br><b>Nagad:</b> Send payment to <strong>{{nagad}}</strong>.<br>For bKash/Nagad, enter the Transaction ID below.</div>
+<label id="txnLabel" style="display:none">Transaction ID<input name="transaction_id" placeholder="e.g. 8H7K2ABC"></label>
+<button class="btn wide">Place Order</button></form></div>
+<div class="panel order-summary"><h2>Order Summary</h2>
+{% for x in items %}<div class="sumrow"><span>{{x.product.name}} × {{x.quantity}}</span><b>৳{{"%.0f"|format(x.subtotal)}}</b></div>{% endfor %}
+<hr><div class="sumrow">Subtotal <b>৳{{"%.0f"|format(subtotal)}}</b></div>
+<div class="sumrow">Delivery <b id="delivery">৳{{"%.0f"|format(delivery)}}</b></div>
+<div class="total">Total <b id="total">৳{{"%.0f"|format(total)}}</b></div>
+<p class="muted">Delivery: ৳{{delivery}} shown for the selected area.</p></div></section>
+<script>
+const subtotal={{subtotal}}, dhaka={{delivery if delivery else 80}}, outside={{delivery+50 if delivery else 130}};
+function updateTotal(){let d=document.getElementById('area').value==='Dhaka'?dhaka:outside;document.getElementById('delivery').textContent='৳'+d;document.getElementById('total').textContent='৳'+(subtotal+d);}
+function toggleTxn(){let p=document.getElementById('payment').value;document.getElementById('txnLabel').style.display=(p==='Cash on Delivery'?'none':'block');}
+toggleTxn();
+</script>{% endblock %}

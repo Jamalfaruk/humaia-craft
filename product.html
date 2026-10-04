@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<section class="wrap product"><div class="bigpic">
+{% if product.image and (product.image.startswith('http://') or product.image.startswith('https://')) %}<img src="{{product.image}}">
+{% elif product.image and product.image not in ['📿','💎','👗','🎁','👜','🌸'] %}<img src="{{url_for('static',filename='uploads/'+product.image)}}">
+{% else %}<span>{{product.image or '♡'}}</span>{% endif %}
+</div><div><small>{{product.category}}</small><h1>{{product.name}}</h1><h2 class="price">৳{{"%.0f"|format(product.price)}}</h2>
+<p>{{product.description}}</p><p>Available stock: <b>{{product.stock}}</b></p>
+{% if product.stock>0 %}<form method="post" action="/cart/add/{{product.id}}"><button class="btn">Add to Cart</button></form>
+{% else %}<b>Out of stock</b>{% endif %}</div></section>{% endblock %}

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ store_name if store_name else "Humaia Craft" }}</title>
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head><body>
+<header><a class="logo" href="/">♡ Humaia Craft</a>
+<nav><a href="/">Home</a><a href="/#products">Products</a><a href="/cart">🛒 Cart</a><a href="/admin">Admin</a></nav></header>
+{% with m=get_flashed_messages() %}{% if m %}<div class="flash">{{m[0]}}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+<footer><b>♡ Humaia Craft</b><p>Beautiful products, made for you.</p></footer>
+</body></html>

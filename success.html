@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}
+<section class="wrap center success"><h1>🎉 Order Received!</h1><p>Your order number is <b>#{{order_id}}</b>.</p>
+<div class="success-box"><div>Subtotal <b>৳{{"%.0f"|format(subtotal)}}</b></div><div>Delivery <b>৳{{"%.0f"|format(delivery)}}</b></div><div class="total">Total <b>৳{{"%.0f"|format(total)}}</b></div></div>
+<p>Your order has been sent to Humaia Craft for processing.</p>
+<a class="btn" href="{{whatsapp_url}}" target="_blank">Send Order on WhatsApp</a>
+<a class="btn secondary" href="/">Continue Shopping</a></section>{% endblock %}

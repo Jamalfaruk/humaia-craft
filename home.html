@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero"><div><small>WELCOME TO HUMAIA CRAFT</small><h1>Beautiful things,<br><span>made for you.</span></h1>
+<p>Fashion, jewelry, gifts and lifestyle products in one lovely store.</p><a class="btn" href="#products">Shop Now →</a></div>
+<div class="hero-art">♡<small>New Collection</small></div></section>
+<section id="products" class="wrap"><small>OUR COLLECTION</small><h2>Featured Products</h2>
+<div class="grid">{% for p in products %}<article class="card"><div class="pic">
+{% if p.image and (p.image.startswith('http://') or p.image.startswith('https://')) %}<img src="{{p.image}}">
+{% elif p.image and p.image not in ['📿','💎','👗','🎁','👜','🌸'] %}<img src="{{url_for('static',filename='uploads/'+p.image)}}">
+{% else %}<span>{{p.image or '♡'}}</span>{% endif %}
+</div><div class="pad"><h3>{{p.name}}</h3><small>{{p.category}} · Stock {{p.stock}}</small><strong>৳{{"%.0f"|format(p.price)}}</strong>
+<a class="btn small" href="/product/{{p.id}}">View Product</a></div></article>{% endfor %}</div></section>
+{% endblock %}

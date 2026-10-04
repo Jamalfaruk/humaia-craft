@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<section class="wrap"><h1>Your Cart</h1>{% if items %}
+<form method="post" action="/cart/update">{% for x in items %}
+<div class="cartrow"><span>{{x.product.image}} {{x.product.name}}</span>
+<input type="number" min="0" max="{{x.product.stock}}" name="quantity_{{x.product.id}}" value="{{x.quantity}}">
+<b>৳{{"%.0f"|format(x.subtotal)}}</b></div>{% endfor %}
+<br><button class="btn">Update Cart</button></form>
+<div class="summary"><div>Subtotal <b>৳{{"%.0f"|format(subtotal)}}</b></div>
+<div>Delivery — Dhaka <b>৳{{delivery_dhaka}}</b></div><div>Delivery — Outside Dhaka <b>৳{{delivery_outside}}</b></div></div>
+<p class="muted">Final delivery charge is selected at checkout.</p><a class="btn" href="/checkout">Checkout</a>
+{% else %}<p>Your cart is empty.</p><a class="btn" href="/">Continue Shopping</a>{% endif %}</section>
+{% endblock %}

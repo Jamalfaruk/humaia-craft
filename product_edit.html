@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}<section class="admin-wrap"><div class="admin-top"><div><span class="eyebrow">PRODUCT MANAGEMENT</span><h1>Edit Product</h1><p>Update product information.</p></div><a class="view-store" href="/admin#products">← Back</a></div>
+<div class="panel edit-panel"><form class="product-form" method="post" enctype="multipart/form-data"><label>Product Name<input name="name" value="{{product.name}}" required></label>
+<div class="two"><label>Category<input name="category" value="{{product.category}}" required></label><label>Price (৳)<input name="price" type="number" step="0.01" value="{{product.price}}" required></label></div>
+<div class="two"><label>Stock<input name="stock" type="number" min="0" value="{{product.stock}}" required></label><label>Image URL<input name="image" value="{{product.image or ''}}"></label></div>
+<label>Replace Photo<input name="photo" type="file" accept="image/*"></label><label>Description<textarea name="description">{{product.description or ''}}</textarea></label>
+<div class="edit-actions"><button class="btn">Save Changes</button><a class="cancel" href="/admin#products">Cancel</a></div></form></div></section>{% endblock %}
