@@ -16,9 +16,9 @@ ADMIN_PASS = os.environ.get("ADMIN_PASS", "change-me-123")
 
 # ===== STORE SETTINGS =====
 STORE_NAME = "Humaia Craft"
-BKASH_NUMBER = "01XXXXXXXXX"       # Replace with your bKash number
-NAGAD_NUMBER = "01XXXXXXXXX"       # Replace with your Nagad number
-WHATSAPP_NUMBER = "8801XXXXXXXXX" # Replace with your WhatsApp number, e.g. 8801712345678
+BKASH_NUMBER = "01752285231"       # Replace with your bKash number
+NAGAD_NUMBER = "01752285231"       # Replace with your Nagad number
+WHATSAPP_NUMBER = "01752285231" # Replace with your WhatsApp number, e.g. 8801712345678
 
 # Delivery charges (৳)
 DELIVERY_DHAKA = 80
